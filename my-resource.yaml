@@ -1,0 +1,38 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  namespace: default
+  annotations:
+    backstage.io/managed-by-location: file:/Users/DKS0745882/Code/test-2/humanitec-backstage/humanitec-backstage-plugins/examples/entities.yaml
+    backstage.io/managed-by-origin-location: file:/Users/DKS0745882/Code/test-2/humanitec-backstage/humanitec-backstage-plugins/examples/entities.yaml
+    humanitec.com/orgId: riansorg
+    humanitec.com/appId: deployed
+  name: deployed-fixed
+  uid: d7779174-c139-46fe-a70c-93d083f590f4
+  etag: f2d916aafdac10ffd3e7a59695cb5e40ef1b12b4
+relations:
+  - type: ownedBy
+    targetRef: group:default/guests
+    target:
+      kind: group
+      namespace: default
+      name: guests
+  - type: partOf
+    targetRef: system:default/examples
+    target:
+      kind: system
+      namespace: default
+      name: examples
+  - type: providesApi
+    targetRef: api:default/example-grpc-api
+    target:
+      kind: api
+      namespace: default
+      name: example-grpc-api
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  system: examples
+  providesApis:
+    - example-grpc-api
